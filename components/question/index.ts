@@ -1,0 +1,11 @@
+export { NameInput } from "./1-NameInput";
+export { CourseInput } from "./4-CourseInput";
+export { SchoolInput } from "./2-SchoolInput";
+export { Intro } from "./0-Intro";
+export { PhoneInput } from "./8-PhoneInput";
+export { GradeInput } from "./3-GradeInput";
+export { DayInput } from "./5-DayInput";
+export { TimeInput } from "./6-TimeInput"; 
+export { Outro } from "./10-Outro";
+export { KindInput } from "./7-KindInput";
+export { AddressInput } from "./9-AddressInput";
