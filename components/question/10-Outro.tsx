@@ -33,6 +33,9 @@ export function Outro() {
   return (
     <>
       <QuestionBoxHeading>¡Todo listo!</QuestionBoxHeading>
+      <QuestionBoxPara>
+        Al dar click en enviar, estás aceptando los <a href="https://sherpal.co/tyc-estudiantes/" target="_blank">términos y condiciones</a> de uso de la plataforma.
+      </QuestionBoxPara>
       {success && <QuestionBoxPara className={submitted ? styles.rendered : ''}>
         Te contactaremos en breve para confirmar la tutoría!
       </QuestionBoxPara>}

@@ -1,7 +1,16 @@
 import { ObjectType } from "@/types";
 
 export const GRADES: ObjectType = {
-  A: "Básico:  Primero a Cuarto (1° - 4°)",
-  B: "Intermedio:  Quinto a Octavo  (5° - 8°)",
-  C: "Avanzado:  Noveno a Doce (9° - 12°)",
+  A: "Primero",
+  B: "Segundo",
+  C: "Tercero",
+  D: "Cuarto",
+  E: "Quinto",
+  F: "Sexto",
+  G: "Septimo",
+  H: "Octavo",
+  I: "Noveno",
+  J: "Decimo",
+  K: "Once",
+  L: "Doce"
 };
