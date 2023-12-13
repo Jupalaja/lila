@@ -1,43 +1,47 @@
+import { SET_TOPIC } from "@/reducers";
+import { ChangeEventHandler } from "react";
 import {
   BtnContainer,
   Error,
-  QuestionInputText,
   QuestionNumHeading,
+  QuestionBoxPara,
+  QuestionInputText
 } from "../index";
 import classNames from "classnames";
 import styles from "./Question.module.css";
 import Image from "next/image";
-import { ChangeEventHandler } from "react";
-import { SET_NAME } from "@/reducers";
 import { useQuestions, useSharedStates } from "@/contexts";
 
-export function NameInput() {
+export function TopicInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.name ?? "";
-  const { name } = state;
+  const errorMsg = error.topic ?? "";
+  const { topic, name } = state;
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     errorMsg &&
       setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.name;
+        delete prevValue.topic;
         return prevValue;
       });
 
-    dispatch({ type: SET_NAME, payload: event.target.value });
+    dispatch({ type: SET_TOPIC, payload: event.target.value });
   };
 
   return (
     <>
-      <QuestionNumHeading questionNum={1}>
-        ¿Cómo se llama el estudiante? *
+      <QuestionNumHeading questionNum={10}>
+        ¿Qué tema necesita reforzar {name.split(" ")[0]}?
       </QuestionNumHeading>
+      <QuestionBoxPara>
+        Esto nos ayuda a estar preparados para la clase
+      </QuestionBoxPara>
 
       <QuestionInputText
-        placeholder="Nombre..."
-        value={name}
+        placeholder="Dirección..."
+        value={topic}
         onChange={handleInputChange}
       />
 

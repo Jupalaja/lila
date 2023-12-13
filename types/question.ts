@@ -15,9 +15,10 @@ export type QuestionProps = {
     | "day"
     | "time"
     | "phone"
+    | "kind"
+    | "topic"
     | "address"
-    | "outro"
-    | "kind";
+    | "outro";
 };
 
 export type SchoolsProps = {

@@ -38,7 +38,7 @@ export function KindInput() {
   return (
     <>
       <QuestionNumHeading questionNum={7}>
-        ¿Qué tipo de clases prefiere {name.split(" ")[0]}?
+        ¿Qué tipo de clases prefiere {name.split(" ")[0]}? *
       </QuestionNumHeading>
 
       <QuestionBoxPara>Selecciona un grado</QuestionBoxPara>

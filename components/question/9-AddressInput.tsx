@@ -33,10 +33,10 @@ export function AddressInput() {
   return (
     <>
       <QuestionNumHeading questionNum={9}>
-        ¿Cual es tu dirección?
+        ¿Cual es tu dirección? *
       </QuestionNumHeading>
       <QuestionBoxPara>
-      🐇 (Puedes saltarte este paso si lo prefieres) 
+      Puedes escribir una dirección cercana
       </QuestionBoxPara>
 
       <QuestionInputText

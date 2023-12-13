@@ -31,6 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     times: string[];
     phone: string;
     kind: string;
+    topic: string;
     address: string;
   };
 
@@ -46,7 +47,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const days = body.days.join(', ');
       const times = body.times.join(', ');
 
-      const googleSheetData = [body.name, body.school, body.grade, courses, days, times, body.kind, body.phone, body.address];
+      const googleSheetData = [body.name, body.school, body.grade, courses, days, times, body.kind, body.phone, body.address, body.topic];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
         range: 'Sheet1',
@@ -65,6 +66,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         Tipo: body.kind,
         Telefono: body.phone,
         Direccion: body.address,
+        Tema: body.topic,
       };
       const iftttResponse = await fetch('https://maker.ifttt.com/trigger/lila/json/with/key/b2Y4VhUq8WCp1CaaK-D91t', {
         method: 'POST',

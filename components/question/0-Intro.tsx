@@ -8,7 +8,7 @@ export function Intro() {
     <>
       <QuestionBoxHeading>Bienvenido a Sherpal</QuestionBoxHeading>
       <QuestionBoxPara>
-        Te ayudaremos a encontrar el tutor ideal en solo 10 saltos 🐇
+        Te ayudaremos a encontrar el tutor ideal en sólo 10 saltos 🐇
         <br />
       </QuestionBoxPara>
       <BtnContainer showPressEnter={true} onClick={handleOkClick}>

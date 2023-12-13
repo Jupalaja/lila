@@ -13,6 +13,10 @@
   margin-bottom: -3px;
 }
 
+.question-box__heading.num > strong {
+  color: #E0348B;
+}
+
 @media screen and (max-width: 599px) {
   .question-box__heading.num > span {
     font-size: 14px;

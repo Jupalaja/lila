@@ -37,7 +37,7 @@ export function CourseInput() {
   return (
     <>
       <QuestionNumHeading questionNum={4}>
-        ¿Qué materias debe reforzar {name.split(" ")[0]}?
+        ¿Qué materias debe reforzar {name.split(" ")[0]}? *
       </QuestionNumHeading>
 
       <DropdownSelect

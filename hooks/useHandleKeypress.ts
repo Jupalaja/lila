@@ -17,21 +17,21 @@ export function useHandleKeypress() {
         if (now + 1 === 2 && name === "") {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            name: "Por favor llena este campo",
+            name: "Este campo es obligatorio",
           }));
           return;
 
         } else if (now + 1 === 3 && school === "") {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            school: "Por favor selecciona una opción",
+            school: "Este campo es obligatorio",
           }));
           return;
 
         } else if (now + 1 === 4 && grade === "") {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            grade: "Por favor selecciona una opción",
+            grade: "Este campo es obligatorio",
           }));
           return;
 

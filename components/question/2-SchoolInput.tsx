@@ -25,7 +25,7 @@ export function SchoolInput() {
   return (
     <>
       <QuestionNumHeading questionNum={2}>
-        ¿De qué colegio es {name.split(" ")[0]}?
+        ¿De qué colegio es {name.split(" ")[0]}? *
       </QuestionNumHeading>
 
       <QuestionBoxPara>Selecciona un Colegio de la lista</QuestionBoxPara>

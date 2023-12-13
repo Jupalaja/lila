@@ -37,7 +37,7 @@ export function TimeInput() {
   return (
     <>
       <QuestionNumHeading questionNum={6}>
-        ¿A qué hora puede {name.split(" ")[0]} tomar la clase?
+        ¿A qué hora puede {name.split(" ")[0]} tomar la clase? *
       </QuestionNumHeading>
 
       <div className={styles["time-dropdown-wrapper"]}>
