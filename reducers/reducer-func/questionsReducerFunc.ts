@@ -12,6 +12,7 @@ import {
   REMOVE_TIME,
   SET_PHONE,
   SET_KIND,
+  SET_TOPIC,
   SET_COMPLETE,
   SET_ADDRESS,
 } from "../index";
@@ -65,6 +66,9 @@ export function questionsReducerFunc(
 
     case SET_ADDRESS:
       return { ...state, address: action.payload };
+    
+    case SET_TOPIC:
+      return { ...state, topic: action.payload };
 
     case SET_COMPLETE:
       return { ...state, isComplete: true };

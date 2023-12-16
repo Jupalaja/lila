@@ -14,6 +14,7 @@ import {
   AddressInput
 } from "./index";
 import styles from "./Question.module.css";
+import { TopicInput } from "./10-TopicInput";
 
 export function Question({
   inView,
@@ -45,7 +46,8 @@ export function Question({
       {type === "time" && <TimeInput />}
       {type === "kind" && <KindInput />}
       {type === "phone" && <PhoneInput />}
-      { type === "address" && <AddressInput />}
+      {type === "address" && <AddressInput />}
+      {type === "topic" && <TopicInput />}
       {type == "outro"  && <Outro />}
 
     </div>

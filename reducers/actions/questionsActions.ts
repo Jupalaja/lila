@@ -10,6 +10,7 @@ export const REMOVE_TIME = "REMOVE_TIME";
 export const SET_PHONE = "SET_PHONE";
 export const SET_KIND = "SET_KIND";
 export const SET_ADDRESS = "SET_ADDRESS";
+export const SET_TOPIC = "SET_TOPIC";
 export const SET_COMPLETE = "SET_COMPLETE";
 
 export type QuestionsActionsType =
@@ -25,4 +26,5 @@ export type QuestionsActionsType =
   | { type: "SET_PHONE"; payload: string }
   | { type: "SET_ADDRESS"; payload: string }
   | { type: "SET_KIND"; payload: string }
+  | { type: "SET_TOPIC"; payload: string }
   | { type: "SET_COMPLETE" };

@@ -8,6 +8,7 @@ export const questionsInitialState = {
   phone: "",
   kind: "",
   address: "",
+  topic: "",
   isComplete: false,
 };
 
@@ -21,5 +22,6 @@ export type QuestionsStateType = {
   phone: string;
   kind: string;
   address: string;
+  topic: string;
   isComplete: boolean;
 };

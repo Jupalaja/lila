@@ -6,6 +6,7 @@ export { PhoneInput } from "./8-PhoneInput";
 export { GradeInput } from "./3-GradeInput";
 export { DayInput } from "./5-DayInput";
 export { TimeInput } from "./6-TimeInput"; 
-export { Outro } from "./10-Outro";
+export { Outro } from "./11-Outro";
+export { TopicInput } from "./10-TopicInput";
 export { KindInput } from "./7-KindInput";
 export { AddressInput } from "./9-AddressInput";

@@ -37,7 +37,7 @@ export function DayInput() {
   return (
     <>
       <QuestionNumHeading questionNum={5}>
-        ¿Qué días puede {name.split(" ")[0]} tomar la clase?
+        ¿Qué días puede {name.split(" ")[0]} tomar la clase? *
       </QuestionNumHeading>
 
       <DropdownSelect

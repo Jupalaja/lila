@@ -33,10 +33,10 @@ export function PhoneInput() {
   return (
     <>
       <QuestionNumHeading questionNum={8}>
-        ¿Cómo contactamos a {name.split(" ")[0]}?
+        ¿Cómo contactamos a {name.split(" ")[0]}? *
       </QuestionNumHeading>
       <QuestionBoxPara>
-        (Recomendamos usar el número de un acudiente)
+        Recomendamos usar el número de un acudiente
       </QuestionBoxPara>
 
       <QuestionInputNumber
