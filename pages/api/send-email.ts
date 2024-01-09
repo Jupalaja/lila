@@ -2,6 +2,7 @@ import { google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'isomorphic-fetch';
 import dotenv from 'dotenv';
+import { format } from 'date-fns';
 dotenv.config();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,13 +16,16 @@ async function authenticate() {
       process.env.CLIENT_EMAIL,
       undefined,
       private_key,
-      ['https://www.googleapis.com/auth/spreadsheets'],
+      ['https://www.googleapis.com/auth/spreadsheets']
     );
   }
   return jwtClient;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   type ReqBody = {
     name: string;
     school: string;
@@ -41,20 +45,35 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const client = await authenticate();
       const sheets = google.sheets({ version: 'v4', auth: client });
 
+      const timestamp = format(new Date(), 'dd/MM/yyyy HH:mm');
+
       const courses = body.courses.join(', ');
-      console.log(courses);
-      
+
       const days = body.days.join(', ');
       const times = body.times.join(', ');
 
-      const googleSheetData = [body.name, body.school, body.grade, courses, days, times, body.kind, body.phone, body.address, body.topic];
+      const googleSheetData = [
+        body.name,
+        body.school,
+        body.grade,
+        courses,
+        days,
+        times,
+        body.kind,
+        body.phone,
+        body.address,
+        body.topic,
+        timestamp,
+      ];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
-        range: 'Sheet1',
+        range: 'Hoja1!A1:K1',
         valueInputOption: 'RAW',
         resource: { values: [googleSheetData] },
       };
-      const response = await sheets.spreadsheets.values.append(googleSheetRequest);
+      const response = await sheets.spreadsheets.values.append(
+        googleSheetRequest
+      );
 
       const iftttData = {
         Nombre: body.name,
@@ -67,26 +86,38 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         Telefono: body.phone,
         Direccion: body.address,
         Tema: body.topic,
+        Registro: timestamp,
       };
-      const iftttResponse = await fetch('https://maker.ifttt.com/trigger/lila/json/with/key/b2Y4VhUq8WCp1CaaK-D91t', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(iftttData),
-      });
+      const iftttResponse = await fetch(
+        'https://maker.ifttt.com/trigger/lila/json/with/key/b2Y4VhUq8WCp1CaaK-D91t',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(iftttData),
+        }
+      );
 
       if (response.status === 200 && iftttResponse.ok) {
-        res.status(200).json({ message: "Data processed and sent successfully to both Google Sheets and IFTTT." });
+        res.status(200).json({
+          message:
+            'Data processed and sent successfully to both Google Sheets and IFTTT.',
+        });
       } else {
-
-        throw new Error('An error occurred while processing and sending the data.');
+        throw new Error(
+          'An error occurred while processing and sending the data.'
+        );
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'An error occurred while processing and sending the data.' });
+      res.status(500).json({
+        message: 'An error occurred while processing and sending the data.',
+      });
     }
   } else {
-    res.status(405).json({ message: 'Method not allowed. Please send a POST request.' });
+    res
+      .status(405)
+      .json({ message: 'Method not allowed. Please send a POST request.' });
   }
 }
