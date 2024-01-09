@@ -1,5 +1,5 @@
-import { useSharedStates } from "@/contexts";
-import { BtnContainer, QuestionBoxHeading, QuestionBoxPara } from "../index";
+import { useSharedStates } from '@/contexts';
+import { BtnContainer, QuestionBoxHeading, QuestionBoxPara } from '../index';
 
 export function Intro() {
   const { handleOkClick } = useSharedStates();
@@ -8,7 +8,7 @@ export function Intro() {
     <>
       <QuestionBoxHeading>Bienvenido a Sherpal</QuestionBoxHeading>
       <QuestionBoxPara>
-        Te ayudaremos a encontrar el tutor ideal en sólo 10 saltos 🐇
+        Te ayudaremos a encontrar el tutor ideal en pocos saltos 🐇
         <br />
       </QuestionBoxPara>
       <BtnContainer showPressEnter={true} onClick={handleOkClick}>

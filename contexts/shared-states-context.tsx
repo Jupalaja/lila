@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { TOTAL_QUESTIONS } from "@/constants";
-import { ObjectType, QuestionNumType, SharedStatesContextType } from "@/types";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { TOTAL_QUESTIONS } from '@/constants';
+import { ObjectType, QuestionNumType, SharedStatesContextType } from '@/types';
+import { createContext, ReactNode, useContext, useState } from 'react';
 
 const SharedStatesContext = createContext<SharedStatesContextType>({
   questionNum: { prev: null, now: 0 },
@@ -37,8 +37,8 @@ export function SharedStatesProvider({ children }: SharedStatesProviderType) {
 
   function handleOkClick() {
     document.dispatchEvent(
-      new KeyboardEvent("keypress", {
-        key: "Enter",
+      new KeyboardEvent('keypress', {
+        key: 'Enter',
       })
     );
   }
@@ -68,5 +68,5 @@ export function useSharedStates(): SharedStatesContextType {
     return context;
   }
 
-  throw new Error("useSharedStates must be use inside SharedStatesProvider");
+  throw new Error('useSharedStates must be use inside SharedStatesProvider');
 }

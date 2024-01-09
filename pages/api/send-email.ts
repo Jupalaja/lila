@@ -28,6 +28,7 @@ export default async function handler(
 ) {
   type ReqBody = {
     name: string;
+    caretaker: string;
     school: string;
     grade: string;
     courses: string[];
@@ -45,7 +46,7 @@ export default async function handler(
       const client = await authenticate();
       const sheets = google.sheets({ version: 'v4', auth: client });
 
-      const timestamp = format(new Date(), 'dd/MM/yyyy HH:mm');
+      const timestamp = format(new Date(), 'dd/MM/yyyy HH:mm:ss');
 
       const courses = body.courses.join(', ');
 
@@ -54,6 +55,7 @@ export default async function handler(
 
       const googleSheetData = [
         body.name,
+        body.caretaker,
         body.school,
         body.grade,
         courses,
@@ -67,7 +69,7 @@ export default async function handler(
       ];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
-        range: 'Hoja1!A1:K1',
+        range: 'Hoja1!A1:L1',
         valueInputOption: 'RAW',
         resource: { values: [googleSheetData] },
       };
@@ -77,6 +79,7 @@ export default async function handler(
 
       const iftttData = {
         Nombre: body.name,
+        Padre: body.caretaker,
         Colegio: body.school,
         Nivel: body.grade,
         Materias: body.courses,

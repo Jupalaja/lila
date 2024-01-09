@@ -5,19 +5,19 @@ import {
   Error,
   QuestionBoxPara,
   QuestionNumHeading,
-} from "../index";
-import classNames from "classnames";
-import styles from "./Question.module.css";
-import Image from "next/image";
-import { useQuestions, useSharedStates } from "@/contexts";
-import { KINDS } from "@/constants";
-import { SET_KIND } from "@/reducers";
+} from '../index';
+import classNames from 'classnames';
+import styles from './Question.module.css';
+import Image from 'next/image';
+import { useQuestions, useSharedStates } from '@/contexts';
+import { KINDS } from '@/constants';
+import { SET_KIND } from '@/reducers';
 
 export function KindInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.kind ?? "";
+  const errorMsg = error.kind ?? '';
   const { name, kind } = state;
 
   function handleDropdownOptionClick(_kind: string) {
@@ -28,7 +28,7 @@ export function KindInput() {
       });
 
     if (_kind === kind) {
-      dispatch({ type: SET_KIND, payload: "" });
+      dispatch({ type: SET_KIND, payload: '' });
     } else {
       dispatch({ type: SET_KIND, payload: _kind });
       setTimeout(() => handleOkClick(), 600);
@@ -37,13 +37,13 @@ export function KindInput() {
 
   return (
     <>
-      <QuestionNumHeading questionNum={7}>
-        ¿Qué tipo de clases prefiere {name.split(" ")[0]}? *
+      <QuestionNumHeading questionNum={8}>
+        ¿Qué tipo de clases prefiere {name.split(' ')[0]}? *
       </QuestionNumHeading>
 
       <QuestionBoxPara>Selecciona un grado</QuestionBoxPara>
 
-      <DropdownSelect className={styles["grade-dropdown"]}>
+      <DropdownSelect className={styles['grade-dropdown']}>
         <div>
           {Object.keys(KINDS).map((kindKey) => {
             const _kind = KINDS[kindKey];
@@ -51,13 +51,13 @@ export function KindInput() {
             return (
               <DropdownSelectOption
                 key={kindKey}
-                className={styles["grade-option"]}
+                className={styles['grade-option']}
                 onClick={() => handleDropdownOptionClick(_kind)}
                 isSelected={_kind === kind}
               >
                 <span
                   className={classNames({
-                    [styles["selected"]]: _kind === kind,
+                    [styles['selected']]: _kind === kind,
                   })}
                 >
                   {kindKey}
@@ -71,13 +71,13 @@ export function KindInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {kind && errorMsg === "" && (
+      {kind && errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
+          className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}
           onClick={handleOkClick}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"

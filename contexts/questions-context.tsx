@@ -1,13 +1,13 @@
-import { TOTAL_QUESTIONS } from "@/constants";
-import { questionsInitialState, questionsReducerFunc } from "@/reducers";
-import { QuestionsContextType } from "@/types";
+import { TOTAL_QUESTIONS } from '@/constants';
+import { questionsInitialState, questionsReducerFunc } from '@/reducers';
+import { QuestionsContextType } from '@/types';
 import {
   createContext,
   ReactNode,
   useContext,
   useMemo,
   useReducer,
-} from "react";
+} from 'react';
 
 const QuestionsContext = createContext<QuestionsContextType>({
   state: questionsInitialState,
@@ -28,21 +28,32 @@ export function QuestionsProvider({ children }: QuestionsProviderType) {
 
   const percent = useMemo(
     function () {
-
       if (state.isComplete) return 100;
       let answeredQues = 0;
-      const { name, school, grade, courses, days, times, phone, kind, address } = state;
+      const {
+        name,
+        caretaker,
+        school,
+        grade,
+        courses,
+        days,
+        times,
+        phone,
+        kind,
+        address,
+      } = state;
 
       if (name) answeredQues += 1;
+      if (caretaker) answeredQues += 1;
       if (school) answeredQues += 1;
       if (grade) answeredQues += 1;
       if (courses.length !== 0) answeredQues += 1;
       if (days.length !== 0) answeredQues += 1;
       if (times.length !== 0) answeredQues += 1;
-      if(kind) answeredQues += 1;
+      if (kind) answeredQues += 1;
       if (phone) answeredQues += 1;
       if (address) answeredQues += 1;
-      
+
       return (answeredQues * 100) / TOTAL_QUESTIONS;
     },
     [state]
@@ -64,5 +75,5 @@ export function useQuestions(): QuestionsContextType {
     return context;
   }
 
-  throw new Error("useQuestions must be use inside QuestionsProvider");
+  throw new Error('useQuestions must be use inside QuestionsProvider');
 }

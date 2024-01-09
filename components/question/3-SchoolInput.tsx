@@ -4,11 +4,11 @@ import {
   QuestionBoxPara,
   QuestionInputSchools,
   QuestionNumHeading,
-} from "../index";
-import classNames from "classnames";
-import styles from "./Question.module.css";
-import Image from "next/image";
-import { useQuestions, useSharedStates } from "@/contexts";
+} from '../index';
+import classNames from 'classnames';
+import styles from './Question.module.css';
+import Image from 'next/image';
+import { useQuestions, useSharedStates } from '@/contexts';
 
 export function SchoolInput() {
   const { state } = useQuestions();
@@ -20,12 +20,12 @@ export function SchoolInput() {
     errorMsg: error,
     handleOkClick,
   } = useSharedStates();
-  const errorMsg = error.school ?? "";
+  const errorMsg = error.school ?? '';
 
   return (
     <>
-      <QuestionNumHeading questionNum={2}>
-        ¿De qué colegio es {name.split(" ")[0]}? *
+      <QuestionNumHeading questionNum={3}>
+        ¿De qué colegio es {name.split(' ')[0]}? *
       </QuestionNumHeading>
 
       <QuestionBoxPara>Selecciona un Colegio de la lista</QuestionBoxPara>
@@ -38,13 +38,13 @@ export function SchoolInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {errorMsg === "" && (
+      {errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
+          className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}
           onClick={handleOkClick}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"

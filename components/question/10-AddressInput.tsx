@@ -1,59 +1,57 @@
-import { SET_TOPIC } from "@/reducers";
-import { ChangeEventHandler } from "react";
+import { SET_ADDRESS } from '@/reducers';
+import { ChangeEventHandler } from 'react';
 import {
   BtnContainer,
   Error,
   QuestionNumHeading,
   QuestionBoxPara,
-  QuestionInputText
-} from "../index";
-import classNames from "classnames";
-import styles from "./Question.module.css";
-import Image from "next/image";
-import { useQuestions, useSharedStates } from "@/contexts";
+  QuestionInputText,
+} from '../index';
+import classNames from 'classnames';
+import styles from './Question.module.css';
+import Image from 'next/image';
+import { useQuestions, useSharedStates } from '@/contexts';
 
-export function TopicInput() {
+export function AddressInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.topic ?? "";
-  const { topic, name } = state;
+  const errorMsg = error.address ?? '';
+  const { address } = state;
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     errorMsg &&
       setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.topic;
+        delete prevValue.address;
         return prevValue;
       });
 
-    dispatch({ type: SET_TOPIC, payload: event.target.value });
+    dispatch({ type: SET_ADDRESS, payload: event.target.value });
   };
 
   return (
     <>
       <QuestionNumHeading questionNum={10}>
-        ¿Qué tema necesita reforzar {name.split(" ")[0]}?
+        ¿Cual es tu dirección? *
       </QuestionNumHeading>
-      <QuestionBoxPara>
-        Esto nos ayuda a estar preparados para la clase
-      </QuestionBoxPara>
+      <QuestionBoxPara>Puedes usar una dirección cercana</QuestionBoxPara>
 
       <QuestionInputText
         placeholder="Dirección..."
-        value={topic}
+        value={address}
         onChange={handleInputChange}
       />
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {errorMsg === "" && (
+      {errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
+          className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={true}
           onClick={handleOkClick}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"

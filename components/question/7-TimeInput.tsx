@@ -1,22 +1,22 @@
-import { useQuestions, useSharedStates } from "@/contexts";
+import { useQuestions, useSharedStates } from '@/contexts';
 import {
   BtnContainer,
   DropdownSelect,
   DropdownSelectOption,
   Error,
   QuestionNumHeading,
-} from "../index";
-import classNames from "classnames";
-import styles from "./Question.module.css";
-import Image from "next/image";
-import { TIMES } from "@/constants";
-import { REMOVE_TIME, SET_TIMES } from "@/reducers";
+} from '../index';
+import classNames from 'classnames';
+import styles from './Question.module.css';
+import Image from 'next/image';
+import { TIMES } from '@/constants';
+import { REMOVE_TIME, SET_TIMES } from '@/reducers';
 
 export function TimeInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.times ?? "";
+  const errorMsg = error.times ?? '';
   const { name, times } = state;
 
   function handleDropdownOptionClick(_time: string) {
@@ -30,21 +30,20 @@ export function TimeInput() {
       dispatch({ type: REMOVE_TIME, payload: _time });
     } else {
       dispatch({ type: SET_TIMES, payload: _time });
-
     }
   }
 
   return (
     <>
-      <QuestionNumHeading questionNum={6}>
-        ¿A qué hora puede {name.split(" ")[0]} tomar la clase? *
+      <QuestionNumHeading questionNum={7}>
+        ¿A qué hora puede {name.split(' ')[0]} tomar la clase? *
       </QuestionNumHeading>
 
-      <div className={styles["time-dropdown-wrapper"]}>
+      <div className={styles['time-dropdown-wrapper']}>
         <DropdownSelect
           className={classNames(
-            styles["grade-dropdown"],
-            styles["course-dropdown"],
+            styles['grade-dropdown'],
+            styles['course-dropdown']
           )}
         >
           <div>
@@ -56,20 +55,20 @@ export function TimeInput() {
                 <DropdownSelectOption
                   key={timeKey}
                   className={classNames(
-                    styles["grade-option"],
-                    styles["course-option"],
+                    styles['grade-option'],
+                    styles['course-option']
                   )}
                   onClick={() => handleDropdownOptionClick(_time)}
                   isSelected={isSelected}
                 >
                   <span
                     className={classNames({
-                      [styles["selected"]]: isSelected,
+                      [styles['selected']]: isSelected,
                     })}
                   >
                     {timeKey}
                   </span>
-                  <span className={styles["course"]}>{_time}</span>
+                  <span className={styles['course']}>{_time}</span>
                 </DropdownSelectOption>
               );
             })}
@@ -79,13 +78,13 @@ export function TimeInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {errorMsg === "" && (
+      {errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
+          className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}
           onClick={handleOkClick}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"

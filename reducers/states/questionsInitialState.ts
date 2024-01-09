@@ -1,19 +1,21 @@
 export const questionsInitialState = {
-  name: "",
-  school: "",
-  grade: "",
+  name: '',
+  caretaker: '',
+  school: '',
+  grade: '',
   courses: [],
   days: [],
   times: [],
-  phone: "",
-  kind: "",
-  address: "",
-  topic: "",
+  phone: '',
+  kind: '',
+  address: '',
+  topic: '',
   isComplete: false,
 };
 
 export type QuestionsStateType = {
   name: string;
+  caretaker: string;
   school: string;
   grade: string;
   courses: string[];

@@ -1,22 +1,22 @@
-import { useQuestions, useSharedStates } from "@/contexts";
+import { useQuestions, useSharedStates } from '@/contexts';
 import {
   BtnContainer,
   DropdownSelect,
   DropdownSelectOption,
   Error,
   QuestionNumHeading,
-} from "../index";
-import classNames from "classnames";
-import styles from "./Question.module.css";
-import Image from "next/image";
-import { REMOVE_COURSE, SET_COURSES } from "@/reducers";
-import { COURSES } from "@/constants";
+} from '../index';
+import classNames from 'classnames';
+import styles from './Question.module.css';
+import Image from 'next/image';
+import { REMOVE_COURSE, SET_COURSES } from '@/reducers';
+import { COURSES } from '@/constants';
 
 export function CourseInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.courses ?? "";
+  const errorMsg = error.courses ?? '';
   const { name, courses } = state;
 
   function handleDropdownOptionClick(_course: string) {
@@ -30,20 +30,19 @@ export function CourseInput() {
       dispatch({ type: REMOVE_COURSE, payload: _course });
     } else {
       dispatch({ type: SET_COURSES, payload: _course });
-
     }
   }
 
   return (
     <>
-      <QuestionNumHeading questionNum={4}>
-        ¿Qué materias debe reforzar {name.split(" ")[0]}? *
+      <QuestionNumHeading questionNum={5}>
+        ¿Qué materias debe reforzar {name.split(' ')[0]}? *
       </QuestionNumHeading>
 
       <DropdownSelect
         className={classNames(
-          styles["grade-dropdown"],
-          styles["course-dropdown"],
+          styles['grade-dropdown'],
+          styles['course-dropdown']
         )}
       >
         <div>
@@ -55,20 +54,20 @@ export function CourseInput() {
               <DropdownSelectOption
                 key={courseKey}
                 className={classNames(
-                  styles["grade-option"],
-                  styles["course-option"],
+                  styles['grade-option'],
+                  styles['course-option']
                 )}
                 onClick={() => handleDropdownOptionClick(_course)}
                 isSelected={isSelected}
               >
                 <span
                   className={classNames({
-                    [styles["selected"]]: isSelected,
+                    [styles['selected']]: isSelected,
                   })}
                 >
                   {courseKey}
                 </span>
-                <span className={styles["course"]}>{_course}</span>
+                <span className={styles['course']}>{_course}</span>
               </DropdownSelectOption>
             );
           })}
@@ -77,13 +76,13 @@ export function CourseInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {errorMsg === "" && (
+      {errorMsg === '' && (
         <BtnContainer
-          className={classNames(styles["btn-container"], styles["ok"])}
+          className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}
           onClick={handleOkClick}
         >
-          OK{" "}
+          OK{' '}
           <Image
             src="/check-small.svg"
             alt="check small"

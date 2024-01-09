@@ -2,6 +2,7 @@ import {
   QuestionsActionsType,
   QuestionsStateType,
   SET_NAME,
+  SET_CARETAKER,
   SET_SCHOOL,
   SET_GRADE,
   SET_COURSES,
@@ -15,7 +16,7 @@ import {
   SET_TOPIC,
   SET_COMPLETE,
   SET_ADDRESS,
-} from "../index";
+} from '../index';
 
 export function questionsReducerFunc(
   state: QuestionsStateType,
@@ -24,6 +25,9 @@ export function questionsReducerFunc(
   switch (action.type) {
     case SET_NAME:
       return { ...state, name: action.payload };
+
+    case SET_CARETAKER:
+      return { ...state, caretaker: action.payload };
 
     case SET_SCHOOL:
       return { ...state, school: action.payload };
@@ -51,7 +55,7 @@ export function questionsReducerFunc(
 
     case SET_TIMES:
       return { ...state, times: [...state.times, action.payload] };
-    
+
     case REMOVE_TIME:
       return {
         ...state,
@@ -60,19 +64,19 @@ export function questionsReducerFunc(
 
     case SET_PHONE:
       return { ...state, phone: action.payload };
-      
+
     case SET_KIND:
       return { ...state, kind: action.payload };
 
     case SET_ADDRESS:
       return { ...state, address: action.payload };
-    
+
     case SET_TOPIC:
       return { ...state, topic: action.payload };
 
     case SET_COMPLETE:
       return { ...state, isComplete: true };
-      
+
     default:
       return state;
   }
