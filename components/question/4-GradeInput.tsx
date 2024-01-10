@@ -43,7 +43,12 @@ export function GradeInput() {
 
       <QuestionBoxPara>Selecciona un grado</QuestionBoxPara>
 
-      <DropdownSelect className={styles['grade-dropdown']}>
+      <DropdownSelect
+        className={classNames(
+          styles['grade-dropdown'],
+          styles['course-dropdown']
+        )}
+      >
         <div>
           {Object.keys(GRADES).map((gradeKey) => {
             const _grade = GRADES[gradeKey];
@@ -51,7 +56,10 @@ export function GradeInput() {
             return (
               <DropdownSelectOption
                 key={gradeKey}
-                className={styles['grade-option']}
+                className={classNames(
+                  styles['grade-option'],
+                  styles['course-option']
+                )}
                 onClick={() => handleDropdownOptionClick(_grade)}
                 isSelected={_grade === grade}
               >

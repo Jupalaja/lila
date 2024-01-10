@@ -41,7 +41,7 @@
 }
 
 .dropdown-select__options.show {
-  border-bottom: thin dashed var(--btn-text-color);
+  /*border-bottom: thin dashed var(--btn-text-color);*/
   max-height: 43.5vh;
 }
 
