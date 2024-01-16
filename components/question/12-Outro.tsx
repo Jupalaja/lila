@@ -65,7 +65,7 @@ export function Outro() {
       </QuestionBoxPara>
       {success && (
         <QuestionBoxPara className={submitted ? styles.rendered : ''}>
-          Te contactaremos en breve para confirmar la tutoría!
+          Te contactaremos en el transcurso del dia para confirmar la tutoría!
         </QuestionBoxPara>
       )}
       <BtnContainer
