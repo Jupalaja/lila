@@ -8,10 +8,12 @@ import styles from './Question.module.css';
 export function Outro() {
   const { state, dispatch } = useQuestions();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleOnClick = async () => {
-    if (submitted) return;
+    if (submitting) return;
+    setSubmitting(true);
 
     const {
       name,
@@ -22,6 +24,7 @@ export function Outro() {
       days,
       times,
       phone,
+      email,
       kind,
       address,
       topic,
@@ -35,6 +38,7 @@ export function Outro() {
       days,
       times,
       phone,
+      email,
       kind,
       address,
       topic,
@@ -49,9 +53,12 @@ export function Outro() {
       setSuccess(true);
       dispatch({ type: 'SET_COMPLETE' });
     }
+
+    setSubmitting(false);
   };
 
-  const buttonClass = submitted ? styles.successfulSubmission : '';
+  const buttonClass =
+    submitting || submitted ? styles.successfulSubmission : '';
 
   return (
     <>
@@ -71,9 +78,11 @@ export function Outro() {
       <BtnContainer
         showPressEnter={false}
         onClick={handleOnClick}
-        className={buttonClass}
+        className={`${
+          submitting || submitted ? styles.successfulSubmission : ''
+        } ${submitting ? styles.btnLoading : ''}`}
       >
-        {submitted ? 'Enviado' : 'Enviar'}
+        {submitting ? 'Cargando...' : submitted ? 'Enviado' : 'Enviar'}
       </BtnContainer>
     </>
   );

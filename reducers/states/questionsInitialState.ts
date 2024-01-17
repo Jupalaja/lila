@@ -7,6 +7,7 @@ export const questionsInitialState = {
   days: [],
   times: [],
   phone: '',
+  email: '',
   kind: '',
   address: '',
   topic: '',
@@ -22,6 +23,7 @@ export type QuestionsStateType = {
   days: string[];
   times: string[];
   phone: string;
+  email: string;
   kind: string;
   address: string;
   topic: string;

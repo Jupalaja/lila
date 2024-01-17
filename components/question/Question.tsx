@@ -7,6 +7,7 @@ import {
   SchoolInput,
   Intro,
   PhoneInput,
+  EmailInput,
   GradeInput,
   DayInput,
   TimeInput,
@@ -15,7 +16,7 @@ import {
   AddressInput,
 } from './index';
 import styles from './Question.module.css';
-import { TopicInput } from './11-TopicInput';
+import { TopicInput } from './12-TopicInput';
 
 export function Question({
   inView,
@@ -45,8 +46,9 @@ export function Question({
       {type === 'course' && <CourseInput />}
       {type === 'day' && <DayInput />}
       {type === 'time' && <TimeInput />}
-      {type === 'kind' && <KindInput />}
       {type === 'phone' && <PhoneInput />}
+      {type === 'email' && <EmailInput />}
+      {type === 'kind' && <KindInput />}
       {type === 'address' && <AddressInput />}
       {type === 'topic' && <TopicInput />}
       {type == 'outro' && <Outro />}

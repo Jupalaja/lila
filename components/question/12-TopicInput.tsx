@@ -1,4 +1,4 @@
-import { SET_ADDRESS } from '@/reducers';
+import { SET_TOPIC } from '@/reducers';
 import { ChangeEventHandler } from 'react';
 import {
   BtnContainer,
@@ -12,34 +12,36 @@ import styles from './Question.module.css';
 import Image from 'next/image';
 import { useQuestions, useSharedStates } from '@/contexts';
 
-export function AddressInput() {
+export function TopicInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.address ?? '';
-  const { address } = state;
+  const errorMsg = error.topic ?? '';
+  const { topic, name } = state;
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     errorMsg &&
       setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.address;
+        delete prevValue.topic;
         return prevValue;
       });
 
-    dispatch({ type: SET_ADDRESS, payload: event.target.value });
+    dispatch({ type: SET_TOPIC, payload: event.target.value });
   };
 
   return (
     <>
-      <QuestionNumHeading questionNum={10}>
-        ¿Cual es tu dirección? *
+      <QuestionNumHeading questionNum={12}>
+        ¿Qué tema necesita reforzar {name.split(' ')[0]}?
       </QuestionNumHeading>
-      <QuestionBoxPara>Puedes usar una dirección cercana</QuestionBoxPara>
+      <QuestionBoxPara>
+        Esto nos ayuda a estar preparados para la clase
+      </QuestionBoxPara>
 
       <QuestionInputText
         placeholder="Dirección..."
-        value={address}
+        value={topic}
         onChange={handleInputChange}
       />
 

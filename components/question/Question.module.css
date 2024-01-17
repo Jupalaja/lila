@@ -230,8 +230,8 @@
 
 /***** succesful Submission *****/
 
-.successfulSubmission > button{
-  background-color: #E0348B;
+.successfulSubmission > button {
+  background-color: #e0348b;
   color: var(--body-background-color);
   transition: background-color 0.5s ease;
   cursor: not-allowed;
@@ -239,5 +239,21 @@
 }
 
 .successfulSubmission > button:hover {
-  background-color: #E0348B;
+  background-color: #e0348b;
+}
+
+.btn-loading {
+  animation: blinkingText 0.5s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

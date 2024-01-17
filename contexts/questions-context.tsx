@@ -39,6 +39,7 @@ export function QuestionsProvider({ children }: QuestionsProviderType) {
         days,
         times,
         phone,
+        email,
         kind,
         address,
       } = state;
@@ -50,8 +51,9 @@ export function QuestionsProvider({ children }: QuestionsProviderType) {
       if (courses.length !== 0) answeredQues += 1;
       if (days.length !== 0) answeredQues += 1;
       if (times.length !== 0) answeredQues += 1;
-      if (kind) answeredQues += 1;
       if (phone) answeredQues += 1;
+      if (email) answeredQues += 1;
+      if (kind) answeredQues += 1;
       if (address) answeredQues += 1;
 
       return (answeredQues * 100) / TOTAL_QUESTIONS;

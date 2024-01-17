@@ -12,6 +12,7 @@ import {
   SET_TIMES,
   REMOVE_TIME,
   SET_PHONE,
+  SET_EMAIL,
   SET_KIND,
   SET_TOPIC,
   SET_COMPLETE,
@@ -64,6 +65,9 @@ export function questionsReducerFunc(
 
     case SET_PHONE:
       return { ...state, phone: action.payload };
+
+    case SET_EMAIL:
+      return { ...state, email: action.payload };
 
     case SET_KIND:
       return { ...state, kind: action.payload };

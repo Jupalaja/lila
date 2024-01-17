@@ -35,6 +35,7 @@ export default async function handler(
     days: string[];
     times: string[];
     phone: string;
+    email: string;
     kind: string;
     topic: string;
     address: string;
@@ -63,13 +64,14 @@ export default async function handler(
         times,
         body.kind,
         body.phone,
+        body.email,
         body.address,
         body.topic,
         timestamp,
       ];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
-        range: 'Hoja1!A1:L1',
+        range: 'Hoja1!A1:M1',
         valueInputOption: 'RAW',
         resource: { values: [googleSheetData] },
       };
@@ -87,6 +89,7 @@ export default async function handler(
         Horas: body.times,
         Tipo: body.kind,
         Telefono: body.phone,
+        Correo: body.email,
         Direccion: body.address,
         Tema: body.topic,
         Registro: timestamp,

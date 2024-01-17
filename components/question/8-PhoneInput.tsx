@@ -32,7 +32,7 @@ export function PhoneInput() {
 
   return (
     <>
-      <QuestionNumHeading questionNum={9}>
+      <QuestionNumHeading questionNum={8}>
         ¿Cómo contactamos a {name.split(' ')[0]}? *
       </QuestionNumHeading>
       <QuestionBoxPara>

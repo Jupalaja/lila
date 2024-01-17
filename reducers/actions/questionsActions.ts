@@ -9,6 +9,7 @@ export const REMOVE_DAY = 'REMOVE_DAY';
 export const SET_TIMES = 'SET_TIMES';
 export const REMOVE_TIME = 'REMOVE_TIME';
 export const SET_PHONE = 'SET_PHONE';
+export const SET_EMAIL = 'SET_EMAIL';
 export const SET_KIND = 'SET_KIND';
 export const SET_ADDRESS = 'SET_ADDRESS';
 export const SET_TOPIC = 'SET_TOPIC';
@@ -26,6 +27,7 @@ export type QuestionsActionsType =
   | { type: 'SET_TIMES'; payload: string }
   | { type: 'REMOVE_TIME'; payload: string }
   | { type: 'SET_PHONE'; payload: string }
+  | { type: 'SET_EMAIL'; payload: string }
   | { type: 'SET_ADDRESS'; payload: string }
   | { type: 'SET_KIND'; payload: string }
   | { type: 'SET_TOPIC'; payload: string }

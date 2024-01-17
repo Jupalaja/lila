@@ -16,6 +16,7 @@ export type QuestionProps = {
     | 'day'
     | 'time'
     | 'phone'
+    | 'email'
     | 'kind'
     | 'topic'
     | 'address'

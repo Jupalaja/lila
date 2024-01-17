@@ -1,5 +1,6 @@
 import { useQuestions, useSharedStates } from '@/contexts';
 import { useEffect } from 'react';
+import { isNotValidEmail } from '@/utils';
 
 export function useHandleKeypress() {
   const { questionNum, setErrorMsg, handleQuestionNumUpdate } =
@@ -7,8 +8,18 @@ export function useHandleKeypress() {
 
   const { now } = questionNum;
   const { state } = useQuestions();
-  const { name, caretaker, school, grade, courses, days, times, phone, kind } =
-    state;
+  const {
+    name,
+    caretaker,
+    school,
+    grade,
+    courses,
+    days,
+    times,
+    phone,
+    email,
+    kind,
+  } = state;
 
   useEffect(() => {
     function handleKeypress(event: KeyboardEvent) {
@@ -57,16 +68,28 @@ export function useHandleKeypress() {
             times: 'Por favor selecciona una hora',
           }));
           return;
-        } else if (now + 1 === 9 && kind === '') {
-          setErrorMsg((prevValue) => ({
-            ...prevValue,
-            kind: 'Por favor selecciona una opción',
-          }));
-          return;
-        } else if (now + 1 === 10 && phone === '') {
+        } else if (now + 1 === 9 && phone === '') {
           setErrorMsg((prevValue) => ({
             ...prevValue,
             phone: 'Por favor llena este campo',
+          }));
+          return;
+        } else if (now + 1 === 10 && email === '') {
+          setErrorMsg((prevValue) => ({
+            ...prevValue,
+            email: 'Por favor llena este campo',
+          }));
+          return;
+        } else if (now + 1 === 10 && email && isNotValidEmail(email)) {
+          setErrorMsg((prevValue) => ({
+            ...prevValue,
+            email: 'Hmm... el Email no parece válido',
+          }));
+          return;
+        } else if (now + 1 === 11 && kind === '') {
+          setErrorMsg((prevValue) => ({
+            ...prevValue,
+            kind: 'Por favor selecciona una opción',
           }));
           return;
         }
@@ -82,5 +105,17 @@ export function useHandleKeypress() {
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name, caretaker, school, days, times, phone, now, grade, courses, kind]);
+  }, [
+    name,
+    caretaker,
+    school,
+    days,
+    times,
+    phone,
+    email,
+    now,
+    grade,
+    courses,
+    kind,
+  ]);
 }
