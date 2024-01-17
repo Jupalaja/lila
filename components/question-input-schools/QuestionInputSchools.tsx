@@ -152,6 +152,7 @@ export function QuestionInputSchools({
       </button>
 
       <DropdownSelect
+        showIndicator={false}
         className={classNames(styles['dropdown-select__options'], {
           [styles['show']]: showSchoolsList && filterSchools.length,
         })}

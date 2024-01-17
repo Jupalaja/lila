@@ -13,11 +13,18 @@ import styles from './DropdownSelect.module.css';
 type DropdownSelectProps = {
   readonly className?: string;
   readonly children: ReactNode;
+  readonly showIndicator?: boolean;
 };
 
-export function DropdownSelect({ className, children }: DropdownSelectProps) {
-  const [hasScrolled, setHasScrolled] = useState(false);
+export function DropdownSelect({
+  className,
+  children,
+  showIndicator = true,
+}: DropdownSelectProps) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isScrollable, setIsScrollable] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
@@ -53,7 +60,17 @@ export function DropdownSelect({ className, children }: DropdownSelectProps) {
     const dropdownEl = dropdownRef.current;
     if (dropdownEl) {
       dropdownEl.scrollTo({
-        top: dropdownEl.scrollHeight,
+        top: dropdownEl.scrollTop + dropdownEl.clientHeight / 2,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const scrollToTup = () => {
+    const dropdownEl = dropdownRef.current;
+    if (dropdownEl) {
+      dropdownEl.scrollTo({
+        top: dropdownEl.scrollTop - dropdownEl.clientHeight / 2,
         behavior: 'smooth',
       });
     }
@@ -61,6 +78,23 @@ export function DropdownSelect({ className, children }: DropdownSelectProps) {
 
   return (
     <div className={classNames(styles['dropdown-select'], className)}>
+      {showIndicator && (
+        <button
+          className={classNames(styles['dropdown-select__arrow-indicator'], {
+            [styles['dropdown-select__arrow-indicator--hidden']]: !hasScrolled,
+          })}
+          onClick={scrollToTup}
+        >
+          <span className={styles['arrow-up']}>
+            <Image
+              src={'/dropdown-arrow.svg'}
+              alt="dropdown arrow"
+              width={26}
+              height={26}
+            />
+          </span>{' '}
+        </button>
+      )}
       <div
         className={classNames(styles['dropdown-select__options'])}
         onScroll={handleScroll}
@@ -69,14 +103,11 @@ export function DropdownSelect({ className, children }: DropdownSelectProps) {
       >
         {children}
       </div>
-      <div className={styles['dropdown-select__gradient']} />
       <button
-        className={classNames(styles['dropdown-select__arrow-indicator'], {
-          [styles['dropdown-select__arrow-indicator--hidden']]: !hasScrolled,
-        })}
+        className={classNames(styles['dropdown-select__arrow-indicator'])}
         onClick={scrollToBottom}
       >
-        <span className={styles['rotate-arrow']}>
+        <span className={styles['arrow-down']}>
           <Image
             src={'/dropdown-arrow.svg'}
             alt="dropdown arrow"

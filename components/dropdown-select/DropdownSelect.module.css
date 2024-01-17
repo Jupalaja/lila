@@ -55,7 +55,11 @@
   pointer-events: none; /* Prevent the gradient from being clickable */
 }
 
-.rotate-arrow {
+.arrow-up {
+  transform: rotate(270deg); /* Rotate arrow 90 degrees to the left */
+}
+
+.arrow-down {
   transform: rotate(90deg); /* Rotate arrow 90 degrees to the left */
 }
 
