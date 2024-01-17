@@ -57,9 +57,6 @@ export function Outro() {
     setSubmitting(false);
   };
 
-  const buttonClass =
-    submitting || submitted ? styles.successfulSubmission : '';
-
   return (
     <>
       <QuestionBoxHeading>¡Todo listo!</QuestionBoxHeading>

@@ -30,7 +30,7 @@ export function MainContent() {
     <section>
       <div>
         <Question
-          type="outro"
+          type="intro"
           outView={now - 1 === 0 || now > 1}
           outViewSlide="up"
           inView={now === 0}
