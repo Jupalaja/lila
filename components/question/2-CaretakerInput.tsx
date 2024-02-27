@@ -39,7 +39,7 @@ export function CaretakerInput() {
         Debe ser el Padre/Madre o la persona a cargo
       </QuestionBoxPara>
       <QuestionInputText
-        placeholder="Nombre..."
+        placeholder="Nombre acudiente..."
         value={caretaker}
         onChange={handleInputChange}
       />

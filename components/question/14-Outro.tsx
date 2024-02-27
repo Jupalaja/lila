@@ -65,7 +65,7 @@ export function Outro() {
         <a href="https://sherpal.co/tyc-estudiantes/" target="_blank">
           términos y condiciones
         </a>{' '}
-        de uso de la plataforma.
+        de uso de la plataforma
       </QuestionBoxPara>
       {success && (
         <QuestionBoxPara className={submitted ? styles.rendered : ''}>

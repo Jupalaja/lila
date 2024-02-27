@@ -37,13 +37,15 @@ export function ReferralInput() {
 
   return (
     <>
-      <QuestionNumHeading questionNum={10}>
+      <QuestionNumHeading questionNum={13}>
         ¿Cómo te enteraste de nosotros?
       </QuestionNumHeading>
 
       <QuestionBoxPara>Selecciona una opción</QuestionBoxPara>
 
       <DropdownSelect
+        showUpIndicator={false}
+        showDownIndicator={false}
         className={classNames(
           styles['grade-dropdown'],
           styles['course-dropdown']
@@ -76,7 +78,7 @@ export function ReferralInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {referral && errorMsg === '' && (
+      {errorMsg === '' && (
         <BtnContainer
           className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}

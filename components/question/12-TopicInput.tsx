@@ -40,7 +40,7 @@ export function TopicInput() {
       </QuestionBoxPara>
 
       <QuestionInputText
-        placeholder="Dirección..."
+        placeholder="Tema..."
         value={topic}
         onChange={handleInputChange}
       />
@@ -50,7 +50,7 @@ export function TopicInput() {
       {errorMsg === '' && (
         <BtnContainer
           className={classNames(styles['btn-container'], styles['ok'])}
-          showPressEnter={true}
+          showPressEnter={false}
           onClick={handleOkClick}
         >
           OK{' '}

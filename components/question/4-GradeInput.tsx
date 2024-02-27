@@ -79,7 +79,7 @@ export function GradeInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {grade && errorMsg === '' && (
+      {errorMsg === '' && (
         <BtnContainer
           className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}

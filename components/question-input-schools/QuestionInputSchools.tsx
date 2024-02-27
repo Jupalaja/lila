@@ -131,7 +131,7 @@ export function QuestionInputSchools({
     >
       <QuestionInputText
         className={styles['dropdown-select__input']}
-        placeholder="Type or select an option"
+        placeholder="Ingresa el nombre del colegio"
         value={localSchool}
         onChange={handleInputChange}
         ref={inputTextRef}
@@ -152,7 +152,7 @@ export function QuestionInputSchools({
       </button>
 
       <DropdownSelect
-        showIndicator={false}
+        showUpIndicator={false}
         className={classNames(styles['dropdown-select__options'], {
           [styles['show']]: showSchoolsList && filterSchools.length,
         })}

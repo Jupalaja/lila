@@ -43,7 +43,11 @@ export function KindInput() {
 
       <QuestionBoxPara>Selecciona una opción</QuestionBoxPara>
 
-      <DropdownSelect className={styles['grade-dropdown']}>
+      <DropdownSelect
+        showUpIndicator={false}
+        showDownIndicator={false}
+        className={styles['grade-dropdown']}
+      >
         <div>
           {Object.keys(KINDS).map((kindKey) => {
             const _kind = KINDS[kindKey];
@@ -71,7 +75,7 @@ export function KindInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {kind && errorMsg === '' && (
+      {errorMsg === '' && (
         <BtnContainer
           className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}

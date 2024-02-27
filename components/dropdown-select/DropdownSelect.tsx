@@ -13,13 +13,15 @@ import styles from './DropdownSelect.module.css';
 type DropdownSelectProps = {
   readonly className?: string;
   readonly children: ReactNode;
-  readonly showIndicator?: boolean;
+  readonly showUpIndicator?: boolean;
+  readonly showDownIndicator?: boolean;
 };
 
 export function DropdownSelect({
   className,
   children,
-  showIndicator = true,
+  showUpIndicator = true,
+  showDownIndicator = true,
 }: DropdownSelectProps) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isScrollable, setIsScrollable] = useState(false);
@@ -78,7 +80,7 @@ export function DropdownSelect({
 
   return (
     <div className={classNames(styles['dropdown-select'], className)}>
-      {showIndicator && (
+      {showUpIndicator && (
         <button
           className={classNames(styles['dropdown-select__arrow-indicator'], {
             [styles['dropdown-select__arrow-indicator--hidden']]: !hasScrolled,
@@ -103,19 +105,21 @@ export function DropdownSelect({
       >
         {children}
       </div>
-      <button
-        className={classNames(styles['dropdown-select__arrow-indicator'])}
-        onClick={scrollToBottom}
-      >
-        <span className={styles['arrow-down']}>
-          <Image
-            src={'/dropdown-arrow.svg'}
-            alt="dropdown arrow"
-            width={26}
-            height={26}
-          />
-        </span>{' '}
-      </button>
+      {showDownIndicator && (
+        <button
+          className={classNames(styles['dropdown-select__arrow-indicator'])}
+          onClick={scrollToBottom}
+        >
+          <span className={styles['arrow-down']}>
+            <Image
+              src={'/dropdown-arrow.svg'}
+              alt="dropdown arrow"
+              width={26}
+              height={26}
+            />
+          </span>{' '}
+        </button>
+      )}
     </div>
   );
 }

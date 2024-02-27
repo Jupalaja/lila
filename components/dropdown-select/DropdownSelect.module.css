@@ -1,14 +1,15 @@
 .dropdown-select {
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* Ensure that children (options and arrow) stretch to full width */
-  position: relative; /* Required for absolute positioning of children if needed */
+  align-items: stretch;
+  position: relative;
+  margin-bottom: 0px;
 }
 .dropdown-select__options {
   background-color: var(--body-background-color);
-  margin-top: 8px;
-  max-height: 30vh; /* Limit the height to 50% of the viewport height */
-  overflow-y: auto; /* Enable vertical scrolling */
+  margin-top: 0px;
+  max-height: 30vh;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
 
@@ -37,7 +38,7 @@
 
 .dropdown-select__arrow-indicator--hidden {
   visibility: hidden;
-  pointer-events: none; /* To disable the button from being clicked when it's invisible */
+  pointer-events: none;
 }
 
 .dropdown-select__gradient {

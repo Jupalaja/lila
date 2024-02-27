@@ -1,6 +1,6 @@
 import { useQuestions, useSharedStates } from '@/contexts';
 import { useEffect } from 'react';
-import { isNotValidEmail } from '@/utils';
+import { isNotValidEmail, isValidPhoneNumber } from '@/utils';
 
 export function useHandleKeypress() {
   const { questionNum, setErrorMsg, handleQuestionNumUpdate } =
@@ -36,7 +36,7 @@ export function useHandleKeypress() {
         } else if (now + 1 === 3 && caretaker === '') {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            name: 'Este campo es obligatorio',
+            caretaker: 'Este campo es obligatorio',
           }));
           return;
         } else if (now + 1 === 4 && school === '') {
@@ -75,6 +75,12 @@ export function useHandleKeypress() {
             phone: 'Por favor llena este campo',
           }));
           return;
+        } else if (now + 1 === 9 && phone && !isValidPhoneNumber(phone)) {
+          setErrorMsg((prevValue) => ({
+            ...prevValue,
+            phone: 'Hmm... el número no parece válido',
+          }));
+          return;
         } else if (now + 1 === 10 && email === '') {
           setErrorMsg((prevValue) => ({
             ...prevValue,
@@ -84,19 +90,15 @@ export function useHandleKeypress() {
         } else if (now + 1 === 10 && email && isNotValidEmail(email)) {
           setErrorMsg((prevValue) => ({
             ...prevValue,
-            email: 'Hmm... el Email no parece válido',
+            email: 'Hmm... el email no parece válido',
           }));
           return;
         } else if (now + 1 === 11 && kind === '') {
+          console.log('kind' + kind);
+          console.log(now + 1);
           setErrorMsg((prevValue) => ({
             ...prevValue,
             kind: 'Por favor selecciona una opción',
-          }));
-          return;
-        } else if (now + 1 === 13 && referral === '') {
-          setErrorMsg((prevValue) => ({
-            ...prevValue,
-            referral: 'Por favor selecciona una opción',
           }));
           return;
         }
