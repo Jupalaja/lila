@@ -12,11 +12,12 @@ import {
   DayInput,
   TimeInput,
   Outro,
+  TopicInput,
   KindInput,
+  ReferralInput,
   AddressInput,
 } from './index';
 import styles from './Question.module.css';
-import { TopicInput } from './12-TopicInput';
 
 export function Question({
   inView,
@@ -51,6 +52,7 @@ export function Question({
       {type === 'kind' && <KindInput />}
       {type === 'address' && <AddressInput />}
       {type === 'topic' && <TopicInput />}
+      {type === 'referral' && <ReferralInput />}
       {type == 'outro' && <Outro />}
     </div>
   );

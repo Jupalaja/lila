@@ -20,6 +20,7 @@ export type QuestionProps = {
     | 'kind'
     | 'topic'
     | 'address'
+    | 'referral'
     | 'outro';
 };
 

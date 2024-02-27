@@ -13,6 +13,7 @@ export const SET_EMAIL = 'SET_EMAIL';
 export const SET_KIND = 'SET_KIND';
 export const SET_ADDRESS = 'SET_ADDRESS';
 export const SET_TOPIC = 'SET_TOPIC';
+export const SET_REFERRAL = 'SET_REFERRAL';
 export const SET_COMPLETE = 'SET_COMPLETE';
 
 export type QuestionsActionsType =
@@ -31,4 +32,5 @@ export type QuestionsActionsType =
   | { type: 'SET_ADDRESS'; payload: string }
   | { type: 'SET_KIND'; payload: string }
   | { type: 'SET_TOPIC'; payload: string }
+  | { type: 'SET_REFERRAL'; payload: string }
   | { type: 'SET_COMPLETE' };

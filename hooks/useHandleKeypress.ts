@@ -19,6 +19,7 @@ export function useHandleKeypress() {
     phone,
     email,
     kind,
+    referral,
   } = state;
 
   useEffect(() => {
@@ -92,6 +93,12 @@ export function useHandleKeypress() {
             kind: 'Por favor selecciona una opción',
           }));
           return;
+        } else if (now + 1 === 13 && referral === '') {
+          setErrorMsg((prevValue) => ({
+            ...prevValue,
+            referral: 'Por favor selecciona una opción',
+          }));
+          return;
         }
 
         handleQuestionNumUpdate();
@@ -117,5 +124,6 @@ export function useHandleKeypress() {
     grade,
     courses,
     kind,
+    referral,
   ]);
 }

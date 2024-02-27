@@ -42,6 +42,7 @@ export function QuestionsProvider({ children }: QuestionsProviderType) {
         email,
         kind,
         address,
+        referral,
       } = state;
 
       if (name) answeredQues += 1;
@@ -55,6 +56,7 @@ export function QuestionsProvider({ children }: QuestionsProviderType) {
       if (email) answeredQues += 1;
       if (kind) answeredQues += 1;
       if (address) answeredQues += 1;
+      if (referral) answeredQues += 1;
 
       return (answeredQues * 100) / TOTAL_QUESTIONS;
     },

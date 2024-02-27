@@ -24,7 +24,7 @@
 
 .grade-dropdown {
   display: inline-flex;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .grade-dropdown .grade-option {

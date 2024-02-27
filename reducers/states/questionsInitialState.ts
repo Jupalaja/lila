@@ -11,6 +11,7 @@ export const questionsInitialState = {
   kind: '',
   address: '',
   topic: '',
+  referral: '',
   isComplete: false,
 };
 
@@ -27,5 +28,6 @@ export type QuestionsStateType = {
   kind: string;
   address: string;
   topic: string;
+  referral: string;
   isComplete: boolean;
 };

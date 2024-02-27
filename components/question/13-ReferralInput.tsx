@@ -10,27 +10,27 @@ import classNames from 'classnames';
 import styles from './Question.module.css';
 import Image from 'next/image';
 import { useQuestions, useSharedStates } from '@/contexts';
-import { KINDS } from '@/constants';
-import { SET_KIND } from '@/reducers';
+import { REFERRALS } from '@/constants';
+import { SET_REFERRAL } from '@/reducers';
 
-export function KindInput() {
+export function ReferralInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.kind ?? '';
-  const { name, kind } = state;
+  const errorMsg = error.referral ?? '';
+  const { referral } = state;
 
-  function handleDropdownOptionClick(_kind: string) {
+  function handleDropdownOptionClick(_referral: string) {
     setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.kind;
+        delete prevValue.referral;
         return prevValue;
       });
 
-    if (_kind === kind) {
-      dispatch({ type: SET_KIND, payload: '' });
+    if (_referral === referral) {
+      dispatch({ type: SET_REFERRAL, payload: '' });
     } else {
-      dispatch({ type: SET_KIND, payload: _kind });
+      dispatch({ type: SET_REFERRAL, payload: _referral });
       setTimeout(() => handleOkClick(), 600);
     }
   }
@@ -38,31 +38,36 @@ export function KindInput() {
   return (
     <>
       <QuestionNumHeading questionNum={10}>
-        ¿Qué tipo de clases prefiere {name.split(' ')[0]}? *
+        ¿Cómo te enteraste de nosotros?
       </QuestionNumHeading>
 
       <QuestionBoxPara>Selecciona una opción</QuestionBoxPara>
 
-      <DropdownSelect className={styles['grade-dropdown']}>
+      <DropdownSelect
+        className={classNames(
+          styles['grade-dropdown'],
+          styles['course-dropdown']
+        )}
+      >
         <div>
-          {Object.keys(KINDS).map((kindKey) => {
-            const _kind = KINDS[kindKey];
+          {Object.keys(REFERRALS).map((referralKey) => {
+            const _referral = REFERRALS[referralKey];
 
             return (
               <DropdownSelectOption
-                key={kindKey}
+                key={referralKey}
                 className={styles['grade-option']}
-                onClick={() => handleDropdownOptionClick(_kind)}
-                isSelected={_kind === kind}
+                onClick={() => handleDropdownOptionClick(_referral)}
+                isSelected={_referral === referral}
               >
                 <span
                   className={classNames({
-                    [styles['selected']]: _kind === kind,
+                    [styles['selected']]: _referral === referral,
                   })}
                 >
-                  {kindKey}
+                  {referralKey}
                 </span>
-                {_kind}
+                {_referral}
               </DropdownSelectOption>
             );
           })}
@@ -71,7 +76,7 @@ export function KindInput() {
 
       {errorMsg && <Error message={errorMsg} />}
 
-      {kind && errorMsg === '' && (
+      {referral && errorMsg === '' && (
         <BtnContainer
           className={classNames(styles['btn-container'], styles['ok'])}
           showPressEnter={false}

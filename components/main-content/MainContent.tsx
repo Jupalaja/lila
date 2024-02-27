@@ -164,13 +164,25 @@ export function MainContent() {
           )}
 
         {kind !== 'Virtual' &&
-          prev === 12 &&
+          [12, 14].includes(prev ?? 0) &&
           [now - 1, now, now + 1].includes(13) && (
             <Question
-              type="outro"
+              type="referral"
               outView={[now - 1, now + 1].includes(13)}
               outViewSlide={now - 1 === 13 ? 'up' : 'down'}
               inView={now === 13}
+              inViewSlide={prev === 14 ? 'down' : 'up'}
+            />
+          )}
+
+        {kind !== 'Virtual' &&
+          prev === 13 &&
+          [now - 1, now, now + 1].includes(14) && (
+            <Question
+              type="outro"
+              outView={[now - 1, now + 1].includes(14)}
+              outViewSlide={now - 1 === 14 ? 'up' : 'down'}
+              inView={now === 14}
               inViewSlide={'up'}
             />
           )}
@@ -188,13 +200,25 @@ export function MainContent() {
           )}
 
         {kind === 'Virtual' &&
-          prev === 11 &&
+          [11, 13].includes(prev ?? 0) &&
           [now - 1, now, now + 1].includes(12) && (
             <Question
-              type="outro"
+              type="referral"
               outView={[now - 1, now + 1].includes(12)}
               outViewSlide={now - 1 === 12 ? 'up' : 'down'}
               inView={now === 12}
+              inViewSlide={prev === 13 ? 'down' : 'up'}
+            />
+          )}
+
+        {kind === 'Virtual' &&
+          prev === 12 &&
+          [now - 1, now, now + 1].includes(13) && (
+            <Question
+              type="outro"
+              outView={[now - 1, now + 1].includes(13)}
+              outViewSlide={now - 1 === 13 ? 'up' : 'down'}
+              inView={now === 13}
               inViewSlide={'up'}
             />
           )}

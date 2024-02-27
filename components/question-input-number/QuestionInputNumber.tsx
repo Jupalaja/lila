@@ -1,13 +1,13 @@
-import { questrialFont } from "@/utils";
+import { quicktimeFont } from '@/utils';
 import {
   ChangeEventHandler,
   ForwardedRef,
   forwardRef,
   useEffect,
   useRef,
-} from "react";
-import styles from "./QuestionInputNumber.module.css";
-import classNames from "classnames";
+} from 'react';
+import styles from './QuestionInputNumber.module.css';
+import classNames from 'classnames';
 
 type QuestionInputNumberProps = {
   readonly placeholder?: string;
@@ -33,12 +33,12 @@ const QuestionInputNumber = forwardRef(
       <input
         ref={passedRef ?? inputRef}
         className={classNames(
-          styles["question-input__number"],
-          questrialFont.className,
+          styles['question-input__number'],
+          quicktimeFont.className,
           className
         )}
         type="tel"
-        placeholder={placeholder ?? ""}
+        placeholder={placeholder ?? ''}
         value={value}
         onChange={onChange}
         pattern="[0-9]*"
@@ -48,6 +48,6 @@ const QuestionInputNumber = forwardRef(
   }
 );
 
-QuestionInputNumber.displayName = "QuestionInputNumber";
+QuestionInputNumber.displayName = 'QuestionInputNumber';
 
 export { QuestionInputNumber };

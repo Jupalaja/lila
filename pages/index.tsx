@@ -1,9 +1,9 @@
-import Head from "next/head";
-import styles from "@/styles/Home.module.css";
-import { questrialFont } from "@/utils";
-import { MainContent, ProgressBar } from "@/components";
-import classNames from "classnames";
-import { SharedStatesProvider, useQuestions } from "@/contexts";
+import Head from 'next/head';
+import styles from '@/styles/Home.module.css';
+import { quicktimeFont } from '@/utils';
+import { MainContent, ProgressBar } from '@/components';
+import classNames from 'classnames';
+import { SharedStatesProvider, useQuestions } from '@/contexts';
 
 export default function Home() {
   const { percent } = useQuestions();
@@ -22,7 +22,7 @@ export default function Home() {
       <header className={styles.header}>
         <ProgressBar width={percent} />
       </header>
-      <main className={classNames(styles.main, questrialFont.className)}>
+      <main className={classNames(styles.main, quicktimeFont.className)}>
         <SharedStatesProvider>
           <MainContent />
         </SharedStatesProvider>

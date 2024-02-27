@@ -1,7 +1,7 @@
-import styles from "./BtnContainer.module.css";
-import { MouseEventHandler, ReactNode, useEffect, useState } from "react";
-import { questrialFont } from "@/utils";
-import classNames from "classnames";
+import styles from './BtnContainer.module.css';
+import { MouseEventHandler, ReactNode, useEffect, useState } from 'react';
+import { quicktimeFont } from '@/utils';
+import classNames from 'classnames';
 
 type BtnContainerProps = {
   readonly children: ReactNode;
@@ -19,24 +19,24 @@ export function BtnContainer({
   const [isOnMobile, setIsOnMobile] = useState(false);
 
   useEffect(() => {
-    if (navigator?.userAgent.toLowerCase().includes("mobile")) {
+    if (navigator?.userAgent.toLowerCase().includes('mobile')) {
       setIsOnMobile(true);
     }
 
     const handleResizeEvent = () => {
-      setIsOnMobile(navigator?.userAgent.toLowerCase().includes("mobile"));
+      setIsOnMobile(navigator?.userAgent.toLowerCase().includes('mobile'));
     };
 
-    window.addEventListener("resize", handleResizeEvent);
+    window.addEventListener('resize', handleResizeEvent);
 
     return () => {
-      window.removeEventListener("resize", handleResizeEvent);
+      window.removeEventListener('resize', handleResizeEvent);
     };
   }, []);
 
   return (
-    <div className={classNames(styles["btn-container"], className)}>
-      <button className={questrialFont.className} onClick={onClick}>
+    <div className={classNames(styles['btn-container'], className)}>
+      <button className={quicktimeFont.className} onClick={onClick}>
         {children}
       </button>
       {isOnMobile || !showPressEnter || (

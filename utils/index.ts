@@ -1,3 +1,3 @@
-export { questrialFont } from './questrialFont';
+export { quicktimeFont } from './quicktimeFont';
 export { postData } from './postData';
 export { isNotValidEmail } from './isNotValidEmail';

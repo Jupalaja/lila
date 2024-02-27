@@ -1,13 +1,13 @@
-import { questrialFont } from "@/utils";
+import { quicktimeFont } from '@/utils';
 import {
   ChangeEventHandler,
   ForwardedRef,
   forwardRef,
   useEffect,
   useRef,
-} from "react";
-import styles from "./QuestionInputText.module.css";
-import classNames from "classnames";
+} from 'react';
+import styles from './QuestionInputText.module.css';
+import classNames from 'classnames';
 
 type QuestionInputTextProps = {
   readonly placeholder?: string;
@@ -34,12 +34,12 @@ const QuestionInputText = forwardRef(
       <input
         ref={passedRef ?? inputTextRef}
         className={classNames(
-          styles["question-input__text"],
-          questrialFont.className,
+          styles['question-input__text'],
+          quicktimeFont.className,
           className
         )}
-        type={type ?? "text"}
-        placeholder={placeholder ?? ""}
+        type={type ?? 'text'}
+        placeholder={placeholder ?? ''}
         value={value}
         onChange={onChange}
       />
@@ -47,6 +47,6 @@ const QuestionInputText = forwardRef(
   }
 );
 
-QuestionInputText.displayName = "QuestionInputText";
+QuestionInputText.displayName = 'QuestionInputText';
 
 export { QuestionInputText };
