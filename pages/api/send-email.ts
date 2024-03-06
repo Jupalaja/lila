@@ -97,8 +97,8 @@ export default async function handler(
         Referencia: body.referral,
         Registro: timestamp,
       };
-      const iftttResponse = await fetch(
-        'https://maker.ifttt.com/trigger/lila/json/with/key/b2Y4VhUq8WCp1CaaK-D91t',
+      const sendToWebHook = await fetch(
+        'https://hook.us1.make.com/4qqx7iexqbi28qo7c7v13nev4jdw54mf',
         {
           method: 'POST',
           headers: {
@@ -108,10 +108,10 @@ export default async function handler(
         }
       );
 
-      if (response.status === 200 && iftttResponse.ok) {
+      if (response.status === 200 && sendToWebHook.ok) {
         res.status(200).json({
           message:
-            'Data processed and sent successfully to both Google Sheets and IFTTT.',
+            'Data processed and sent successfully to both Google Sheets and Make.',
         });
       } else {
         throw new Error(

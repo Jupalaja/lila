@@ -44,8 +44,6 @@ export function ReferralInput() {
       <QuestionBoxPara>Selecciona una opción</QuestionBoxPara>
 
       <DropdownSelect
-        showUpIndicator={false}
-        showDownIndicator={false}
         className={classNames(
           styles['grade-dropdown'],
           styles['course-dropdown']
