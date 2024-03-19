@@ -4,12 +4,15 @@ import { QuestionBoxHeading, QuestionBoxPara, BtnContainer } from '../index';
 import { useQuestions } from '@/contexts';
 import { postData } from '@/utils';
 import styles from './Question.module.css';
+import { useSharedStates } from '@/contexts';
 
 export function Outro() {
   const { state, dispatch } = useQuestions();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const { setScrollEnabled } = useSharedStates();
 
   const handleOnClick = async () => {
     if (submitting) return;
@@ -56,6 +59,7 @@ export function Outro() {
       setSubmitted(true);
       setSuccess(true);
       dispatch({ type: 'SET_COMPLETE' });
+      setScrollEnabled(false);
     }
 
     setSubmitting(false);

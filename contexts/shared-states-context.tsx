@@ -12,6 +12,8 @@ const SharedStatesContext = createContext<SharedStatesContextType>({
   setShowSchoolsList: () => {},
   handleQuestionNumUpdate: () => {},
   handleOkClick: () => {},
+  scrollEnabled: true,
+  setScrollEnabled: () => {},
 });
 
 type SharedStatesProviderType = {
@@ -23,6 +25,8 @@ export function SharedStatesProvider({ children }: SharedStatesProviderType) {
     prev: null,
     now: 0,
   });
+
+  const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const [errorMsg, setErrorMsg] = useState<ObjectType>({});
   const [showSchoolsList, setShowSchoolsList] = useState(false);
@@ -52,6 +56,8 @@ export function SharedStatesProvider({ children }: SharedStatesProviderType) {
     setShowSchoolsList,
     handleQuestionNumUpdate,
     handleOkClick,
+    scrollEnabled,
+    setScrollEnabled,
   };
 
   return (
