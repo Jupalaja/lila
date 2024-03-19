@@ -4,4 +4,4 @@ export * from './TOTAL_QUESTIONS';
 export * from './DAYS';
 export * from './TIMES';
 export * from './KINDS';
-export * from './REFERRALS';
+export * from './REFERENCE';

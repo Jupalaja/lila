@@ -17,6 +17,7 @@ import {
   SET_TOPIC,
   SET_COMPLETE,
   SET_ADDRESS,
+  SET_REFERENCE,
   SET_REFERRAL,
 } from '../index';
 
@@ -72,6 +73,9 @@ export function questionsReducerFunc(
 
     case SET_KIND:
       return { ...state, kind: action.payload };
+
+    case SET_REFERENCE:
+      return { ...state, reference: action.payload };
 
     case SET_REFERRAL:
       return { ...state, referral: action.payload };

@@ -14,6 +14,7 @@ import {
   Outro,
   TopicInput,
   KindInput,
+  ReferenceInput,
   ReferralInput,
   AddressInput,
 } from './index';
@@ -52,6 +53,7 @@ export function Question({
       {type === 'kind' && <KindInput />}
       {type === 'address' && <AddressInput />}
       {type === 'topic' && <TopicInput />}
+      {type === 'reference' && <ReferenceInput />}
       {type === 'referral' && <ReferralInput />}
       {type == 'outro' && <Outro />}
     </div>

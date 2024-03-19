@@ -39,6 +39,7 @@ export default async function handler(
     kind: string;
     topic: string;
     address: string;
+    reference: string;
     referral: string;
   };
 
@@ -68,12 +69,13 @@ export default async function handler(
         body.email,
         body.address,
         body.topic,
+        body.reference,
         body.referral,
         timestamp,
       ];
       const googleSheetRequest = {
         spreadsheetId: process.env.SHEET_ID,
-        range: 'Hoja1!A1:N1',
+        range: 'Hoja1!A1:O1',
         valueInputOption: 'RAW',
         resource: { values: [googleSheetData] },
       };
@@ -94,7 +96,8 @@ export default async function handler(
         Correo: body.email,
         Direccion: body.address,
         Tema: body.topic,
-        Referencia: body.referral,
+        Referencia: body.reference,
+        Referido: body.referral,
         Registro: timestamp,
       };
       const sendToWebHook = await fetch(

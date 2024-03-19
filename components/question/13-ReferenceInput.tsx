@@ -10,27 +10,27 @@ import classNames from 'classnames';
 import styles from './Question.module.css';
 import Image from 'next/image';
 import { useQuestions, useSharedStates } from '@/contexts';
-import { REFERRALS } from '@/constants';
-import { SET_REFERRAL } from '@/reducers';
+import { REFERENCE } from '@/constants';
+import { SET_REFERENCE } from '@/reducers';
 
-export function ReferralInput() {
+export function ReferenceInput() {
   const { errorMsg: error, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
 
-  const errorMsg = error.referral ?? '';
-  const { referral } = state;
+  const errorMsg = error.reference ?? '';
+  const { reference } = state;
 
-  function handleDropdownOptionClick(_referral: string) {
+  function handleDropdownOptionClick(_reference: string) {
     setErrorMsg &&
       setErrorMsg((prevValue) => {
-        delete prevValue.referral;
+        delete prevValue.reference;
         return prevValue;
       });
 
-    if (_referral === referral) {
-      dispatch({ type: SET_REFERRAL, payload: '' });
+    if (_reference === reference) {
+      dispatch({ type: SET_REFERENCE, payload: '' });
     } else {
-      dispatch({ type: SET_REFERRAL, payload: _referral });
+      dispatch({ type: SET_REFERENCE, payload: _reference });
       setTimeout(() => handleOkClick(), 600);
     }
   }
@@ -50,24 +50,24 @@ export function ReferralInput() {
         )}
       >
         <div>
-          {Object.keys(REFERRALS).map((referralKey) => {
-            const _referral = REFERRALS[referralKey];
+          {Object.keys(REFERENCE).map((referenceKey) => {
+            const _reference = REFERENCE[referenceKey];
 
             return (
               <DropdownSelectOption
-                key={referralKey}
+                key={referenceKey}
                 className={styles['grade-option']}
-                onClick={() => handleDropdownOptionClick(_referral)}
-                isSelected={_referral === referral}
+                onClick={() => handleDropdownOptionClick(_reference)}
+                isSelected={_reference === reference}
               >
                 <span
                   className={classNames({
-                    [styles['selected']]: _referral === referral,
+                    [styles['selected']]: _reference === reference,
                   })}
                 >
-                  {referralKey}
+                  {referenceKey}
                 </span>
-                {_referral}
+                {_reference}
               </DropdownSelectOption>
             );
           })}

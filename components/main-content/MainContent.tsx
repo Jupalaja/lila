@@ -7,7 +7,7 @@ export function MainContent() {
   const { questionNum, setShowSchoolsList } = useSharedStates();
   const { prev, now } = questionNum;
   const { state } = useQuestions();
-  const { kind } = state;
+  const { kind, reference } = state;
 
   useHandleKeypress();
   useHandleScroll();
@@ -167,7 +167,7 @@ export function MainContent() {
           [12, 14].includes(prev ?? 0) &&
           [now - 1, now, now + 1].includes(13) && (
             <Question
-              type="referral"
+              type="reference"
               outView={[now - 1, now + 1].includes(13)}
               outViewSlide={now - 1 === 13 ? 'up' : 'down'}
               inView={now === 13}
@@ -176,6 +176,36 @@ export function MainContent() {
           )}
 
         {kind !== 'Virtual' &&
+          (reference === 'Recomendación de un profesor' ||
+            reference === 'Recomendación de un amigo') &&
+          [13, 15].includes(prev ?? 0) &&
+          [now - 1, now, now + 1].includes(14) && (
+            <Question
+              type="referral"
+              outView={[now - 1, now + 1].includes(14)}
+              outViewSlide={now - 1 === 14 ? 'up' : 'down'}
+              inView={now === 14}
+              inViewSlide={prev === 15 ? 'down' : 'up'}
+            />
+          )}
+
+        {kind !== 'Virtual' &&
+          (reference === 'Recomendación de un profesor' ||
+            reference === 'Recomendación de un amigo') &&
+          prev === 14 &&
+          [now - 1, now, now + 1].includes(15) && (
+            <Question
+              type="outro"
+              outView={[now - 1, now + 1].includes(15)}
+              outViewSlide={now - 1 === 15 ? 'up' : 'down'}
+              inView={now === 15}
+              inViewSlide={'up'}
+            />
+          )}
+
+        {kind !== 'Virtual' &&
+          reference !== 'Recomendación de un profesor' &&
+          reference !== 'Recomendación de un amigo' &&
           prev === 13 &&
           [now - 1, now, now + 1].includes(14) && (
             <Question
@@ -203,7 +233,7 @@ export function MainContent() {
           [11, 13].includes(prev ?? 0) &&
           [now - 1, now, now + 1].includes(12) && (
             <Question
-              type="referral"
+              type="reference"
               outView={[now - 1, now + 1].includes(12)}
               outViewSlide={now - 1 === 12 ? 'up' : 'down'}
               inView={now === 12}
@@ -212,6 +242,36 @@ export function MainContent() {
           )}
 
         {kind === 'Virtual' &&
+          (reference === 'Recomendación de un profesor' ||
+            reference === 'Recomendación de un amigo') &&
+          [12, 14].includes(prev ?? 0) &&
+          [now - 1, now, now + 1].includes(13) && (
+            <Question
+              type="referral"
+              outView={[now - 1, now + 1].includes(13)}
+              outViewSlide={now - 1 === 13 ? 'up' : 'down'}
+              inView={now === 13}
+              inViewSlide={prev === 14 ? 'down' : 'up'}
+            />
+          )}
+
+        {kind === 'Virtual' &&
+          (reference === 'Recomendación de un profesor' ||
+            reference === 'Recomendación de un amigo') &&
+          prev === 13 &&
+          [now - 1, now, now + 1].includes(14) && (
+            <Question
+              type="outro"
+              outView={[now - 1, now + 1].includes(14)}
+              outViewSlide={now - 1 === 14 ? 'up' : 'down'}
+              inView={now === 14}
+              inViewSlide={'up'}
+            />
+          )}
+
+        {kind === 'Virtual' &&
+          reference !== 'Recomendación de un profesor' &&
+          reference !== 'Recomendación de un amigo' &&
           prev === 12 &&
           [now - 1, now, now + 1].includes(13) && (
             <Question

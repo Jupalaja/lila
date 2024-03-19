@@ -28,6 +28,7 @@ export function Outro() {
       kind,
       address,
       topic,
+      reference,
       referral,
     } = state;
     const dataToSend = {
@@ -43,6 +44,7 @@ export function Outro() {
       kind,
       address,
       topic,
+      reference,
       referral,
     };
 

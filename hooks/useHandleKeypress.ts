@@ -19,6 +19,7 @@ export function useHandleKeypress() {
     phone,
     email,
     kind,
+    reference,
     referral,
   } = state;
 
@@ -94,13 +95,10 @@ export function useHandleKeypress() {
           }));
           return;
         } else if (now + 1 === 11 && kind === '') {
-          console.log('kind' + kind);
-          console.log(now + 1);
           setErrorMsg((prevValue) => ({
             ...prevValue,
             kind: 'Por favor selecciona una opción',
           }));
-          return;
         }
 
         handleQuestionNumUpdate();
@@ -126,6 +124,7 @@ export function useHandleKeypress() {
     grade,
     courses,
     kind,
+    reference,
     referral,
   ]);
 }
