@@ -5,6 +5,7 @@ import {
   DropdownSelectOption,
   Error,
   QuestionNumHeading,
+  QuestionBoxPara,
 } from '../index';
 import classNames from 'classnames';
 import styles from './Question.module.css';
@@ -38,6 +39,14 @@ export function DayInput() {
       <QuestionNumHeading questionNum={6}>
         ¿Qué días puede {name.split(' ')[0]} tomar la clase? *
       </QuestionNumHeading>
+      {days.includes('Domingo') && (
+        <QuestionBoxPara>
+          <a>
+            ¡Queremos darte la mejor atención durante la semana! 😊 <br />
+            Por eso te recomendamos que no tomes clases los domingos <br />
+          </a>
+        </QuestionBoxPara>
+      )}
 
       <DropdownSelect
         className={classNames(
