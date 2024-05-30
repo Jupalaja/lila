@@ -1,4 +1,3 @@
-// ./components/question/Outro.tsx
 import { useState } from 'react';
 import { QuestionBoxHeading, QuestionBoxPara, BtnContainer } from '../index';
 import { useQuestions } from '@/contexts';
@@ -16,6 +15,8 @@ export function Outro() {
 
   const handleOnClick = async () => {
     if (submitting) return;
+    if (submitted) window.location.href = 'https://sherpal.co';
+
     setSubmitting(true);
 
     const {
@@ -76,9 +77,11 @@ export function Outro() {
         de uso de la plataforma
       </QuestionBoxPara>
       {success && (
-        <QuestionBoxPara className={submitted ? styles.rendered : ''}>
-          Te contactaremos en el transcurso del dia para confirmar la tutoría!
-        </QuestionBoxPara>
+        <>
+          <QuestionBoxPara className={submitted ? styles.rendered : ''}>
+            Te contactaremos en el transcurso del dia para confirmar la tutoría!
+          </QuestionBoxPara>
+        </>
       )}
       <BtnContainer
         showPressEnter={false}
@@ -87,7 +90,7 @@ export function Outro() {
           submitting || submitted ? styles.successfulSubmission : ''
         } ${submitting ? styles.btnLoading : ''}`}
       >
-        {submitting ? 'Cargando...' : submitted ? 'Enviado' : 'Enviar'}
+        {submitting ? 'Cargando...' : submitted ? 'Volver a Inicio' : 'Enviar'}
       </BtnContainer>
     </>
   );
